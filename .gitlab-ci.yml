@@ -21,13 +21,10 @@ stages:          # List of stages for jobs, and their order of execution
 
 
 unit-test-job:   # This job runs in the test stage.
-  image: openjdk:latest
+  image: node:latest
   stage: test    # It only starts when the job in the build stage completes successfully.
   script:
-    - apt-get install -y curl \
-      && curl -sL https://deb.nodesource.com/setup_9.x | bash - \
-      && apt-get install -y nodejs \
-      && curl -L https://www.npmjs.com/install.sh | sh
+    - npm install java
     - npm install maven
     - mvn compile
     - mvn package
