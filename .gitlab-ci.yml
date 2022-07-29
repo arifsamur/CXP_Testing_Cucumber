@@ -27,5 +27,5 @@ java-build:
     - mvn package -DskipTests=true
     - mvn install
     - javac src/test/java/com/platform/runners/CukesRunner.java
-    - java target/test-classes/com/platform/runners/CukesRunner.clas
+    - java target/test-classes/com/platform/runners/CukesRunner.class
     # API endpoint to pass tests into JIRA.
