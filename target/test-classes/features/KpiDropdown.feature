@@ -1,9 +1,8 @@
-@CXP_login
 Feature: Login to CX-P Dashboard
-  User Story: An authorized user should be able to login to CX-P Dashboard with valid credentials
+  User Story: An authorized user should be able to login to CX-P Dashboard and see all KPIs.
 
   Background:
-    Given User open login page
+    Given User navigate to login page
 
   @KPI
   Scenario: User login to Dashboard

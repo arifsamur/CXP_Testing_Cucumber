@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
     features = "src/test/resources/features",
     glue = "com/platform/step_definitions",
     dryRun = false,
-    tags = "@Surgeon"   //"@ or @"
+    tags = "@qa"   //"@Surgeon or @KPI or @Smoke or @Locale"
 )
 public class CukesRunner {
 

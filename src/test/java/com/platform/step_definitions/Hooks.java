@@ -2,25 +2,34 @@ package com.platform.step_definitions;
 
 import com.platform.utilities.ConfigurationReader;
 import com.platform.utilities.Driver;
+import com.platform.utilities.LogFunctions;
+import com.platform.utilities.TakeScreenShots;
 import io.cucumber.java.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
 
+    LogFunctions logFunctions = new LogFunctions(); //Logfunctions page instance
+    TakeScreenShots takeScreenShots = new TakeScreenShots();
+
+
+
     @Before
     public void setUpScenario(){
 
-        // Call CXP website link from ConfigurationReader page. URL String name cxpUrl
-        String cxpUrl = ConfigurationReader.getProperty("CXP_url");
+        System.out.println("-----------------------STARTING------------------------");
 
-        // Open CXP URL
-        Driver.getDriver().get(cxpUrl);
+
+        String browser = ConfigurationReader.getProperty("browser"); // Browser is chosen from Configuration.properties
 
         Driver.getDriver().manage().window().maximize();
 
-        System.out.println("Before: Test is starting, webpage opens");
 
+        System.out.println("Before all: Test Execution is starting, and "+ browser.toString().toUpperCase() +" browser is being opened");
+
+
+        System.out.println("-------------------NOW EXECUTION----------------------------");
 
         System.out.println();
     }
@@ -28,8 +37,12 @@ public class Hooks {
     @After
     public void tearDownScenario(){
 
+        String browser = ConfigurationReader.getProperty("browser"); // Browser is chosen from Configuration.properties
         System.out.println();
-        System.out.println("After: Test is executed. Browser is being closed.");
+        System.out.println("---------------------THE END----------------------------");
+        System.out.println("After all: Test(s) executed. Browser "+ browser.toString().toUpperCase() +" is being closed.");
+
+       // logFunctions.logOut();
 
         Driver.closeDriver();
 
@@ -58,19 +71,23 @@ public class Hooks {
     @AfterStep
     public void tearDownStep(Scenario scenario) throws InterruptedException {
 
+        System.out.println("---- After each step info -----");
+
         System.out.println("Scenario Name = " + scenario.getName());
         System.out.println("Tag Name(s) = " + scenario.getSourceTagNames());
-        System.out.println("Scenario is Failed = " + scenario.isFailed());
+        System.out.println("Is scenario failed = " + scenario.isFailed());
+        System.out.println("------------NOW TAKING A SS----------------");
+
 
         Thread.sleep(5000);
 
-        // Take a screenshot
-        byte[] screenshot = ((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
-
-        // embed it in the report
-        scenario.attach(screenshot, "image/png", scenario.getName());
+        takeScreenShots.takeSS(scenario);
 
 
     }
 
+
+
+
+// End
 }
