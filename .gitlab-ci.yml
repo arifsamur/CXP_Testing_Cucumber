@@ -16,19 +16,13 @@
 # This specific template is located at:
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
-stages:          # List of stages for jobs, and their order of execution
-  - test
+stages:
+  - build
 
-
-unit-test-job:   # This job runs in the test stage.
-  image: node:latest
-  stage: test    # It only starts when the job in the build stage completes successfully.
+java-build:
+  # select the most appropriate image for your project
+  image: maven:3.8-openjdk-11
+  stage: build
   script:
-    - npm install java
-    - npm install maven
-    - mvn compile
-    - mvn package
-    - npm install --save-dev cucumber-junit
-    - javac src/test/java/com/platform/runners/CukesRunner.java
-    - java target/test-classes/com/platform/runners/CukesRunner.class # Command to run selenium tests (Place path of file here)
+    - mvn package -DskipTests=true
     # API endpoint to pass tests into JIRA.
