@@ -25,7 +25,6 @@ java-build:
   stage: build
   script:
     - mvn package -DskipTests=true
-    - npm install --save-dev cucumber-junit
     - javac src/test/java/com/platform/runners/CukesRunner.java
     - java target/test-classes/com/platform/runners/CukesRunner.clas
     # API endpoint to pass tests into JIRA.

@@ -134,6 +134,21 @@
                         <!-- optional: default phase is "generate-resources" -->
                         <phase>generate-resources</phase>
                     </execution>
+                    <execution>
+                        <id>npm install cucumber-junit</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+
+                        <!-- optional: default phase is "generate-resources" -->
+                        <phase>generate-resources</phase>
+
+                        <configuration>
+                            <!-- optional: The default argument is actually        "install", so unless you need to run some other npm command,        you can remove this whole <configuration> section.        -->
+                            <arguments>install cucumber-junit</arguments>
+                        </configuration>
+                    </execution>
+
                 </executions>
                 <configuration>
                     <nodeVersion>v4.6.0</nodeVersion>
