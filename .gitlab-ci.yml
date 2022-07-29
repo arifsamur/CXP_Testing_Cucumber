@@ -26,5 +26,5 @@ unit-test-job:   # This job runs in the test stage.
   script:
     - mvn compile
     - mvn package
-    - java -jar target/test-classes/com/platform/runners/CukesRunner.class # Command to run selenium tests (Place path of file here)
+    - java target/test-classes/com/platform/runners/CukesRunner.class # Command to run selenium tests (Place path of file here)
     # API endpoint to pass tests into JIRA.
