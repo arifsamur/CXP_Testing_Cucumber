@@ -20,17 +20,13 @@ public class Hooks {
 
         System.out.println("-----------------------STARTING------------------------");
 
+       // Driver.getDriver().manage().window().maximize();
 
         String browser = ConfigurationReader.getProperty("browser"); // Browser is chosen from Configuration.properties
-
-        Driver.getDriver().manage().window().maximize();
-
-
         System.out.println("Before all: Test Execution is starting, and "+ browser.toString().toUpperCase() +" browser is being opened");
 
 
-        System.out.println("-------------------NOW EXECUTION----------------------------");
-
+        System.out.println("-------------------NOW EXECUTING STARTS----------------------------");
         System.out.println();
     }
 
@@ -40,7 +36,7 @@ public class Hooks {
         String browser = ConfigurationReader.getProperty("browser"); // Browser is chosen from Configuration.properties
         System.out.println();
         System.out.println("---------------------THE END----------------------------");
-        System.out.println("After all: Test(s) executed. Browser "+ browser.toString().toUpperCase() +" is being closed.");
+        System.out.println("Test(s) executed. Browser "+ browser.toString().toUpperCase() +" is being closed.");
 
        // logFunctions.logOut();
 
@@ -52,7 +48,7 @@ public class Hooks {
     @BeforeStep
     public void setUpStep(Scenario scenario){
 
-        System.out.println("---- Before each step -----");
+       // System.out.println("---- Before each step -----");
 
 
         if (scenario.isFailed()) {
@@ -79,7 +75,7 @@ public class Hooks {
         System.out.println("------------NOW TAKING A SS----------------");
 
 
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         takeScreenShots.takeSS(scenario);
 

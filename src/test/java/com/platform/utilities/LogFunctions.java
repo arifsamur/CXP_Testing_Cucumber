@@ -39,18 +39,19 @@ public class LogFunctions {
 
 
 
-    public void logIn(){
-        Driver.getDriver().manage().window().maximize();
+    public void logIn(String userName, String password){
+//        Driver.getDriver().manage().window().maximize();
 
         // Call CXP website link from ConfigurationReader page. URL String name cxpUrl
         String cxpUrl = ConfigurationReader.getProperty("CXP_url");
 
         // Open CXP URL
-        Driver.getDriver().get(cxpUrl);
-
+//        Driver.getDriver().get(cxpUrl);
+/*
         String userName = ConfigurationReader.getProperty("surgeon"); // Username called from Configuration.properties
         String password = ConfigurationReader.getProperty("sur_pass"); // Password called from Configuration.properties
 
+ */
 
         cxpLoginPage.userNameBox.sendKeys(userName);
         cxpLoginPage.passwordBox.sendKeys(password);
@@ -64,7 +65,7 @@ public class LogFunctions {
 
        // String browser = ConfigurationReader.getProperty("browser"); // Browser is chosen from Configuration.properties
 
-        Driver.getDriver().manage().window().maximize();
+       // Driver.getDriver().manage().window().maximize();
 
         // Call CXP website link from ConfigurationReader page. URL String name cxpUrl
         String cxpUrl = ConfigurationReader.getProperty("CXP_url");

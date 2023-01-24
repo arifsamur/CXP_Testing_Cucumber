@@ -57,7 +57,7 @@ public class DateFilterStepDefinitions {
       //  Driver.getDriver().findElement(By.xpath("(//div[contains(@class, 'menu')])//*[contains (text(), 'Last Quarter')]")).click();
 
 
-        System.out.println("periodList.size() = " + periodList.size());
+        System.out.println("# of Periods = " + periodList.size());
 
 
         for (int i=0;i<periodList.size();i++)

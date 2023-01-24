@@ -20,7 +20,7 @@ public class LoginStepDefinitions {
     @Given("User open login page")
     public void user_open_login_page() {
 
-        Driver.getDriver().manage().window().maximize();
+//        Driver.getDriver().manage().window().maximize();
 
 
         /*
@@ -29,8 +29,6 @@ public class LoginStepDefinitions {
 
         // Open CXP URL
         Driver.getDriver().get(cxpUrl);
-
-
          */
 
         logFunctions.logPage();
@@ -61,7 +59,7 @@ public class LoginStepDefinitions {
         Thread.sleep(2000);
 
 
-        String actualTitle = Driver.getDriver().getTitle();
+        String actualTitle = Driver.getDriver().getTitle(); //Actual title
 
         String expectedTitle = "Vendor Neutral, Enterprise Scale, Digital Surgery Platform to make surgery smarter and safer";
 
@@ -73,7 +71,7 @@ public class LoginStepDefinitions {
         dashboardPage.userProfile.click();
         String actualUserEmail = dashboardPage.userEmail.getAttribute("value") ;
 
-        System.out.println("actualUserEmail = " + actualUserEmail);
+        System.out.println("Actual User's Email = " + actualUserEmail);
 
         Assert.assertEquals("Wrong user logged in", actualUserEmail, userName);
 

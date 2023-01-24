@@ -6,14 +6,11 @@ import com.platform.pages.SettingsPage;
 import com.platform.utilities.ConfigurationReader;
 import com.platform.utilities.Driver;
 import com.platform.utilities.LogFunctions;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 
 import java.util.Set;
 
@@ -27,25 +24,12 @@ public class SurgeonStepDefinitions {
     @Given("Surgeon open login page")
     public void surgeon_open_login_page() {
 
-        Driver.getDriver().manage().window().maximize();
+        logFunctions.logPage();
 
-        // Call CXP website link from ConfigurationReader page. URL String name cxpUrl
-        String cxpUrl = ConfigurationReader.getProperty("CXP_url");
-
-        // Open CXP URL
-        Driver.getDriver().get(cxpUrl);
-
-
-        String actualTitle = Driver.getDriver().getTitle(); // String actual title
-
-        String expectedTitle = "Sign in to CX-PLATFORM";
-
-        // Assert actual title is equal to expected title
-        Assert.assertEquals("Actual title does not match with expected title!", expectedTitle, actualTitle);
 
 
         System.out.println("Given: User now on login page");
-        System.out.println("Login Page Title is " + actualTitle);
+        System.out.println("Login Page Title is " + Driver.getDriver().getTitle());
 
         System.out.println();
     }
@@ -56,22 +40,12 @@ public class SurgeonStepDefinitions {
     @When("Surgeon login to dashboard")
     public void surgeonLoginToDashboard() {
 
-        Driver.getDriver().manage().window().maximize();
-
-        logFunctions.logIn(); // Surgeon persona logs in
-
-        /*
-        String userName = ConfigurationReader.getProperty("surgeon"); // Username called from Configuration.properties
-        String password = ConfigurationReader.getProperty("sur_pass"); // Password called from Configuration.properties
-
-        cxpLoginPage.userNameBox.sendKeys(userName);
-        cxpLoginPage.passwordBox.sendKeys(password);
-        cxpLoginPage.loginButton.click();
-
-
-         */
+        logFunctions.logIn(ConfigurationReader.getProperty("surgeon"),ConfigurationReader.getProperty("sur_pass")); // Surgeon persona logs in
 
         System.out.println("When: Surgeon enter credentials and click Submit button");
+        String actualTitle = Driver.getDriver().getTitle();
+        String expectedTitle = "Vendor Neutral, Enterprise Scale, Digital Surgery Platform to make surgery smarter and safer";
+        Assert.assertEquals("Actual title does not match with expected title!", expectedTitle, actualTitle);
         System.out.println();
 
 
@@ -80,9 +54,7 @@ public class SurgeonStepDefinitions {
 
 
     @Then("Surgeon see main menu")
-    public void surgeonSeeMainMenu(Scenario scenario) throws InterruptedException {
-
-        Driver.getDriver().manage().window().maximize();
+    public void surgeonSeeMainMenu() throws InterruptedException {
 
         String actualTitle = Driver.getDriver().getTitle(); // Actual title
 
@@ -115,14 +87,6 @@ public class SurgeonStepDefinitions {
 
         String cxaHandle= Driver.getDriver().getWindowHandle();
 
-        // Take a screenshot
-        byte[] screenshot = ((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
-
-        // embed it in the report
-        scenario.attach(screenshot, "image/png", scenario.getName());
-
-
-
         Driver.getDriver().switchTo().window(mainHandle); // Back to dashboard
 
 
@@ -148,7 +112,8 @@ public class SurgeonStepDefinitions {
         Driver.getDriver().switchTo().window(cxaHandle2);
         System.out.println(Driver.getDriver().getTitle());
 
-        Assert.assertEquals(Driver.getDriver().getTitle(),"Dashboard");
+
+        Assert.assertEquals("Welcome",Driver.getDriver().getTitle());
 
         Driver.getDriver().switchTo().window(cxiHandle2);
         System.out.println(Driver.getDriver().getTitle());

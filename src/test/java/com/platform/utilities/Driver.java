@@ -24,19 +24,19 @@ public class Driver {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
-                    Driver.getDriver().manage().window().maximize();
+                    driver.manage().window().maximize();
                     break;
 
                 case "edge":
                     WebDriverManager.edgedriver().setup();
                     driver = new EdgeDriver();
-                    Driver.getDriver().manage().window().maximize();
+                    driver.manage().window().maximize();
                     break;
 
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
-                    Driver.getDriver().manage().window().maximize();
+                    driver.manage().window().maximize();
                     break;
 
                 case "chrome-headless":

@@ -56,7 +56,7 @@ public class DashboardPage {
         // Create a list of menu items
         List<WebElement> menuList = Driver.getDriver().findElements(By.xpath("//ul[contains(@tabindex,'-1')]//li"));
 
-        System.out.println("# of items in the main menu"+menuList.size());
+        System.out.println("# of items in the main menu= "+menuList.size());
 
         // Navigating to CXI
 
@@ -88,7 +88,7 @@ public class DashboardPage {
         // Create a list of menu items
         List<WebElement> menuList = Driver.getDriver().findElements(By.xpath("//ul[contains(@tabindex,'-1')]//li"));
 
-        System.out.println("# of items in the main menu"+menuList.size());
+        System.out.println("# of items in the main menu= "+menuList.size());
 
         // Navigating to CXA
 
@@ -140,7 +140,7 @@ public class DashboardPage {
 
 
 
-    @FindBy(className = "CXP-jss6")
+    @FindBy(xpath = "//img[@alt='menu']")
     public WebElement menuLink;
 
     @FindBy(xpath = "//*[@id=\"menu-list-grow\"]/a[5]/li")
@@ -172,7 +172,7 @@ public class DashboardPage {
      */
 
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div[3]/div/div/main/div[1]/button[2]/span")
+    @FindBy(xpath = "//button[normalize-space()='KPIs']")
     public WebElement kpiDropdown;
 
 
@@ -182,20 +182,20 @@ public class DashboardPage {
     @FindBy(xpath = "//*[@data-testid='periodSelect']")
     public WebElement periodContainer;
 
-    @FindBy (xpath = "//*[@id=\"root\"]/div[3]/div/div/main/div[1]/div/div/div[2]/div[3]/div/div/button/span")
+    @FindBy (xpath = "//button[normalize-space()='APPLY AND SHOW RESULTS']")
     public WebElement applyShow;
 
 
-    @FindBy (xpath = "//*[@id=\"root\"]/div[3]/div/div/main/div[1]/div/div/div[2]/div[2]/div[2]/div/div[3]/button/span")
+    @FindBy (xpath = "//button[normalize-space()='Primetime']")
     public WebElement primeTime;
 
     @FindBy (xpath = "//*[@id=\"root\"]/div[3]/div/div/main/div[1]/div/div/div[2]/div[2]/div[3]/div/div[3]/button/span")
     public WebElement hours;
 
-    @FindBy (xpath = "//*[@id=\"root\"]/div[3]/div/div/main/div[1]/div/div/div[2]/div[2]/div[4]/div/div[3]/div[1]/button/span")
+    @FindBy (xpath = "//button[normalize-space()='Weekdays']")
     public WebElement weekDays;
 
-    @FindBy (xpath = "//*[@id=\"root\"]/div[3]/div/div/main/div[1]/div/div/div[2]/div[2]/div[4]/div/div[3]/div[1]/button/span")
+    @FindBy (xpath = "//button[normalize-space()='All Days']")
     public WebElement allDays;
 
     @FindBy (xpath = "//img [@alt='profile']")
@@ -204,7 +204,7 @@ public class DashboardPage {
     @FindBy (xpath = "//input [@name='email']")
     public WebElement userEmail;
 
-    @FindBy (xpath = "//*[contains(text(),'Cancel')]")
+    @FindBy (xpath = "//* [@data-testid=\"cancel\"]") //  //*[contains(text(),'Cancel')]
     public WebElement cancelProfile;
 
 
